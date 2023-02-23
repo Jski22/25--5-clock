@@ -13,6 +13,18 @@ function App() {
           <Col>Break Length</Col>
           <Col>Session Length</Col>
         </Row>
+         <Row>
+          <Col>
+            <button></button>
+            time
+            <button></button>
+          </Col>
+          <Col>
+            <button></button>
+            time
+            <button></button>
+          </Col>
+        </Row>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
           <Card bg={'secondary'} style={{ width: 'calc(30rem + 1vmin)', height: 'calc(16rem + 2vmin)'}}>This will be time display</Card>
