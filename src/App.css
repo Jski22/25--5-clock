@@ -17,3 +17,7 @@
 i {
   cursor: pointer;
 }
+
+#start_stop, #reset {
+  font-size: 40px;
+}
