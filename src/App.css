@@ -14,6 +14,10 @@
   border: 3px solid black;
 }
 
+.row {
+  padding-bottom: 20px;
+}
+
 i {
   cursor: pointer;
 }
