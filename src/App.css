@@ -25,3 +25,11 @@ i {
 #start_stop, #reset {
   font-size: 40px;
 }
+
+#break-decrement, #session-decrement {
+  padding-right: 12px;
+}
+
+#break-increment, #session-increment {
+  padding-left: 12px;
+}
