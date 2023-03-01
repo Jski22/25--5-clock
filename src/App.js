@@ -16,7 +16,21 @@ class App extends React.Component {
       sessionTime: 25,
       breakTime: 5
     }
+  this.decrementBreak = this.decrementBreak.bind(this);
+  this.incrementBreak = this.incrementBreak.bind(this);
   };
+
+  decrementBreak() {
+    this.setState(state => ({
+      breakTime: state.breakTime - 1
+    }));
+  }
+
+  incrementBreak() {
+    this.setState(state => ({
+      breakTime: state.breakTime + 1
+    }));
+  }
 
   render () {
     return (
@@ -31,9 +45,9 @@ class App extends React.Component {
           </Row>
           <Row>
             <Col>
-              <i id="break-decrement"><FaArrowDown /></i>
+              <i id="break-decrement" onClick={this.decrementBreak}><FaArrowDown /></i>
               {this.state.breakTime}
-              <i id="break-increment"><FaArrowUp /></i>
+              <i id="break-increment" onClick={this.incrementBreak}><FaArrowUp /></i>
             </Col>
             <Col>
               <i id="session-decrement"><FaArrowDown /></i>
