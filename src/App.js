@@ -14,7 +14,8 @@ class App extends React.Component {
     super(props);
     this.state = { 
       sessionTime: 25,
-      breakTime: 5
+      breakTime: 5,
+      displayTime: 0
     }
   this.decrementBreak = this.decrementBreak.bind(this);
   this.incrementBreak = this.incrementBreak.bind(this);
@@ -75,7 +76,7 @@ class App extends React.Component {
             <Col className="d-flex justify-content-center">
               <Card bg={'secondary'} style={{ width: 'calc(25rem + 1vmin)', height: 'calc(12rem + 2vmin)'}}>
                 <Row className="mx-auto">Session</Row>
-                <Row className="mx-auto">Time Display</Row>
+                <Row className="mx-auto">{this.state.displayTime}</Row>
               </Card>
             </Col>
           </Row>
