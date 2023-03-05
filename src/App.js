@@ -19,30 +19,52 @@ class App extends React.Component {
     }
   this.decrementBreak = this.decrementBreak.bind(this);
   this.incrementBreak = this.incrementBreak.bind(this);
+  this.decrementSession = this.decrementSession.bind(this);
+  this.incrementSession = this.incrementSession.bind(this);
   };
 
-  decrementBreak(str) {
-    let checkId = str;
-
-    if (checkId === "break-decrement") {
+  decrementBreak() {
+    if (this.state.breakTime <= 1) {
+      this.setState(state => ({
+        breakTime: state.breakTime 
+      }));
+    } else {
       this.setState(state => ({
         breakTime: state.breakTime - 1
       }));
-    } else if (checkId === "session-decrement") {
+    }
+  }
+
+  incrementBreak() {
+    if (this.state.breakTime >= 60) {
+      this.setState(state => ({
+        breakTime: state.breakTime 
+      }));
+    } else {
+      this.setState(state => ({
+        breakTime: state.breakTime + 1
+      }));
+    }
+  }
+
+  decrementSession() {
+    if (this.state.sessionTime <= 1) {
+      this.setState(state => ({
+        sessionTime: state.sessionTime 
+      }));
+    } else {
       this.setState(state => ({
         sessionTime: state.sessionTime - 1
       }));
     }
   }
 
-  incrementBreak(str) {
-    let checkId = str;
-
-    if (checkId === "break-increment") {
+  incrementSession() {
+    if (this.state.sessionTime >= 60) {
       this.setState(state => ({
-        breakTime: state.breakTime + 1
+        sessionTime: state.sessionTime 
       }));
-    } else if (checkId === "session-increment") {
+    } else {
       this.setState(state => ({
         sessionTime: state.sessionTime + 1
       }));
@@ -62,14 +84,14 @@ class App extends React.Component {
           </Row>
           <Row>
             <Col>
-              <i id="break-decrement" onClick={ () => this.decrementBreak("break-decrement")}><FaArrowDown /></i>
+              <i id="break-decrement" onClick={this.decrementBreak}><FaArrowDown /></i>
               {this.state.breakTime}
-              <i id="break-increment" onClick={ () => this.incrementBreak("break-increment")}><FaArrowUp /></i>
+              <i id="break-increment" onClick={this.incrementBreak}><FaArrowUp /></i>
             </Col>
             <Col>
-              <i id="session-decrement" onClick={ () => this.decrementBreak("session-decrement")}><FaArrowDown /></i>
+              <i id="session-decrement" onClick={this.decrementSession}><FaArrowDown /></i>
               {this.state.sessionTime}
-              <i id="session-increment" onClick={ () => this.incrementBreak("session-increment")}><FaArrowUp /></i>
+              <i id="session-increment" onClick={this.incrementSession}><FaArrowUp /></i>
             </Col>
           </Row>
           <Row>
