@@ -15,7 +15,7 @@ class App extends React.Component {
     this.state = { 
       sessionTime: 25,
       breakTime: 5,
-      displayTime: 0
+      displayTime: "25:00"
     }
   this.decrementBreak = this.decrementBreak.bind(this);
   this.incrementBreak = this.incrementBreak.bind(this);
