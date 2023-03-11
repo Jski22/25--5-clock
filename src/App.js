@@ -85,12 +85,12 @@ class App extends React.Component {
           <Row>
             <Col>
               <i id="break-decrement" onClick={this.decrementBreak}><FaArrowDown /></i>
-              {this.state.breakTime}
+              <span id="break-length">{this.state.breakTime}</span>
               <i id="break-increment" onClick={this.incrementBreak}><FaArrowUp /></i>
             </Col>
             <Col>
               <i id="session-decrement" onClick={this.decrementSession}><FaArrowDown /></i>
-              {this.state.sessionTime}
+              <span id="session-length">{this.state.sessionTime}</span>
               <i id="session-increment" onClick={this.incrementSession}><FaArrowUp /></i>
             </Col>
           </Row>
