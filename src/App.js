@@ -21,7 +21,17 @@ class App extends React.Component {
   this.incrementBreak = this.incrementBreak.bind(this);
   this.decrementSession = this.decrementSession.bind(this);
   this.incrementSession = this.incrementSession.bind(this);
+  this.convertDisplayTime = this.convertDisplayTime.bind(this);
   };
+
+  convertDisplayTime(num) {
+    let minutes = Math.floor(num/60);
+    let seconds = num % 60;
+
+    seconds = seconds < 10 ? ('0' + seconds) : seconds;
+
+    return `${minutes}:${seconds}`;
+  }
 
   decrementBreak() {
     if (this.state.breakTime <= 1) {
@@ -98,7 +108,7 @@ class App extends React.Component {
             <Col className="d-flex justify-content-center">
               <Card bg={'secondary'} style={{ width: 'calc(25rem + 1vmin)', height: 'calc(12rem + 2vmin)'}}>
                 <Row className="mx-auto">Session</Row>
-                <Row className="mx-auto">{this.state.displayTime}</Row>
+                <Row className="mx-auto">{this.convertDisplayTime(this.state.displayTime)}</Row>
               </Card>
             </Col>
           </Row>
