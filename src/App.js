@@ -89,8 +89,8 @@ class App extends React.Component {
             <h1>25 + 5 Clock</h1>
           </Row>
           <Row>
-            <Col>Break Length</Col>
-            <Col>Session Length</Col>
+            <Col id="break-label">Break Length</Col>
+            <Col id="session-label">Session Length</Col>
           </Row>
           <Row>
             <Col>
