@@ -107,8 +107,12 @@ class App extends React.Component {
           <Row>
             <Col className="d-flex justify-content-center">
               <Card bg={'secondary'} style={{ width: 'calc(25rem + 1vmin)', height: 'calc(12rem + 2vmin)'}}>
-                <Row className="mx-auto">Session</Row>
-                <Row className="mx-auto">{this.convertDisplayTime(this.state.displayTime)}</Row>
+                <Row className="mx-auto">
+                  <h2>Session</h2>
+                </Row>
+                <Row className="mx-auto">
+                  <h3>{this.convertDisplayTime(this.state.displayTime)}</h3>
+                </Row>
               </Card>
             </Col>
           </Row>
