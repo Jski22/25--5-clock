@@ -111,7 +111,7 @@ class App extends React.Component {
                   <h2>Session</h2>
                 </Row>
                 <Row className="mx-auto">
-                  <h3>{this.convertDisplayTime(this.state.displayTime)}</h3>
+                  <h2>{this.convertDisplayTime(this.state.displayTime)}</h2>
                 </Row>
               </Card>
             </Col>
