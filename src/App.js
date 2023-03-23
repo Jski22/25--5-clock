@@ -81,6 +81,10 @@ class App extends React.Component {
     }
   }
 
+  handlePlayPause() {
+    
+  }
+
   render () {
     return (
       <div className="App">
