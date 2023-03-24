@@ -15,7 +15,8 @@ class App extends React.Component {
     this.state = { 
       sessionTime: 25,
       breakTime: 5,
-      displayTime: 25 * 60
+      displayTime: 25 * 60,
+      timerInterval: undefined
     }
   this.decrementBreak = this.decrementBreak.bind(this);
   this.incrementBreak = this.incrementBreak.bind(this);
@@ -23,6 +24,10 @@ class App extends React.Component {
   this.incrementSession = this.incrementSession.bind(this);
   this.convertDisplayTime = this.convertDisplayTime.bind(this);
   };
+
+  handlePlayPause() {
+    this.timerInterval = setInterval(() => {}, 1000);
+  }
 
   convertDisplayTime(num) {
     let minutes = Math.floor(num/60);
@@ -79,10 +84,6 @@ class App extends React.Component {
         sessionTime: state.sessionTime + 1
       }));
     }
-  }
-
-  handlePlayPause() {
-    
   }
 
   render () {
