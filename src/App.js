@@ -23,10 +23,17 @@ class App extends React.Component {
   this.decrementSession = this.decrementSession.bind(this);
   this.incrementSession = this.incrementSession.bind(this);
   this.convertDisplayTime = this.convertDisplayTime.bind(this);
+  this.handlePlayPause = this.handlePlayPause.bind(this);
   };
 
   handlePlayPause() {
-    this.timerInterval = setInterval(() => {}, 1000);
+    this.timerInterval = setInterval(() => {
+      const { displayTime } = this.state;
+
+      this.setState({
+        displayTime: displayTime - 1
+      });
+    }, 1000);
   }
 
   convertDisplayTime(num) {
@@ -123,7 +130,7 @@ class App extends React.Component {
           </Row>
           <Row>
             <Col className="d-flex justify-content-end">
-              <i id="start_stop"><HiPlayPause /></i>
+              <i id="start_stop" onClick={this.handlePlayPause}><HiPlayPause /></i>
             </Col>
             <Col className="d-flex justify-content-start">
               <i id="reset"><MdOutlineRestartAlt /></i>
