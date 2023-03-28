@@ -16,7 +16,8 @@ class App extends React.Component {
       sessionTime: 25,
       breakTime: 5,
       displayTime: 25 * 60,
-      timerInterval: undefined
+      timerInterval: undefined,
+      playing: false
     }
   this.decrementBreak = this.decrementBreak.bind(this);
   this.incrementBreak = this.incrementBreak.bind(this);
@@ -27,13 +28,27 @@ class App extends React.Component {
   };
 
   handlePlayPause() {
-    this.timerInterval = setInterval(() => {
-      const { displayTime } = this.state;
+    const { playing } = this.state;
+
+    if (playing === true) {
+      clearInterval(this.timerInterval);
 
       this.setState({
-        displayTime: displayTime - 1
+        playing: false
       });
-    }, 1000);
+    } else {
+      this.setState({
+        playing: true 
+      });
+
+      this.timerInterval = setInterval(() => {
+        const { displayTime } = this.state;
+
+        this.setState({
+          displayTime: displayTime - 1
+        });
+      }, 1000);
+    }
   }
 
   convertDisplayTime(num) {
