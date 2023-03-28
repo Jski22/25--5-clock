@@ -16,6 +16,7 @@ class App extends React.Component {
       sessionTime: 25,
       breakTime: 5,
       displayTime: 25 * 60,
+      displayTitle: "Session",
       timerInterval: undefined,
       playing: false
     }
@@ -25,6 +26,7 @@ class App extends React.Component {
   this.incrementSession = this.incrementSession.bind(this);
   this.convertDisplayTime = this.convertDisplayTime.bind(this);
   this.handlePlayPause = this.handlePlayPause.bind(this);
+  this.handleReset = this.handleReset.bind(this);
   };
 
   handlePlayPause() {
@@ -42,13 +44,33 @@ class App extends React.Component {
       });
 
       this.timerInterval = setInterval(() => {
-        const { displayTime } = this.state;
+        const { displayTime, displayTitle, breakTime, sessionTime } = this.state;
 
-        this.setState({
-          displayTime: displayTime - 1
-        });
+        if (displayTime === 0) {
+          this.setState({
+            displayTitle: (displayTitle === "Session") ? "Break" : "Session",
+            displayTime: (displayTitle === "Session") ? (breakTime * 60) : (sessionTime * 60)
+          });
+        } else {
+          this.setState({
+            displayTime: displayTime - 1
+          });
+        }
       }, 1000);
     }
+  }
+
+  handleReset() {
+    this.setState({
+      sessionTime: 25,
+      breakTime: 5,
+      displayTime: 25 * 60,
+      displayTitle: "Session",
+      timerInterval: undefined,
+      playing: false
+    });
+
+    clearInterval(this.timerInterval);
   }
 
   convertDisplayTime(num) {
@@ -135,7 +157,7 @@ class App extends React.Component {
             <Col className="d-flex justify-content-center">
               <Card bg={'secondary'} style={{ width: 'calc(25rem + 1vmin)', height: 'calc(12rem + 2vmin)'}}>
                 <Row className="mx-auto">
-                  <h2>Session</h2>
+                  <h2>{this.state.displayTitle}</h2>
                 </Row>
                 <Row className="mx-auto">
                   <h2>{this.convertDisplayTime(this.state.displayTime)}</h2>
@@ -148,7 +170,7 @@ class App extends React.Component {
               <i id="start_stop" onClick={this.handlePlayPause}><HiPlayPause /></i>
             </Col>
             <Col className="d-flex justify-content-start">
-              <i id="reset"><MdOutlineRestartAlt /></i>
+              <i id="reset" onClick={this.handleReset}><MdOutlineRestartAlt /></i>
             </Col>
           </Row>
         </Container>
