@@ -12,6 +12,7 @@ import React from 'react';
 class App extends React.Component {
   constructor(props){
     super(props);
+    
     this.state = { 
       sessionTime: 25,
       breakTime: 5,
@@ -113,7 +114,8 @@ class App extends React.Component {
       }));
     } else {
       this.setState(state => ({
-        sessionTime: state.sessionTime - 1
+        sessionTime: state.sessionTime - 1,
+        displayTime: state.displayTime - (1 * 60)
       }));
     }
   }
@@ -125,7 +127,8 @@ class App extends React.Component {
       }));
     } else {
       this.setState(state => ({
-        sessionTime: state.sessionTime + 1
+        sessionTime: state.sessionTime + 1,
+        displayTime: state.displayTime + (1 * 60)
       }));
     }
   }
