@@ -5,13 +5,14 @@ import Container from 'react-bootstrap/Container';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { HiPlayPause } from "react-icons/hi2";
 import { MdOutlineRestartAlt } from "react-icons/md";
+import buzzer from './assets/buzzer.wav';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import React from 'react';
 
 class App extends React.Component {
   constructor(props){
-    super(props);
+    super(props); 
     
     this.state = { 
       sessionTime: 25,
@@ -46,12 +47,15 @@ class App extends React.Component {
 
       this.timerInterval = setInterval(() => {
         const { displayTime, displayTitle, breakTime, sessionTime } = this.state;
+        let audio = document.getElementById("beep");
 
         if (displayTime === 0) {
           this.setState({
             displayTitle: (displayTitle === "Session") ? "Break" : "Session",
             displayTime: (displayTitle === "Session") ? (breakTime * 60) : (sessionTime * 60)
           });
+
+          audio.play();
         } else {
           this.setState({
             displayTime: displayTime - 1
@@ -171,6 +175,7 @@ class App extends React.Component {
           <Row>
             <Col className="d-flex justify-content-end">
               <i id="start_stop" onClick={this.handlePlayPause}><HiPlayPause /></i>
+              <audio id="beep" src={buzzer} className="clip"></audio>
             </Col>
             <Col className="d-flex justify-content-start">
               <i id="reset" onClick={this.handleReset}><MdOutlineRestartAlt /></i>
