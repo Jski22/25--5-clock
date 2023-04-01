@@ -29,3 +29,7 @@ i {
 #break-increment, #session-increment {
   padding-left: 12px;
 }
+
+#time-left {
+  font-size: 45px;
+}
