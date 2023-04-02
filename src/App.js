@@ -66,6 +66,8 @@ class App extends React.Component {
   }
 
   handleReset() {
+    let audio = document.getElementById("beep");
+
     this.setState({
       sessionTime: 25,
       breakTime: 5,
@@ -76,6 +78,9 @@ class App extends React.Component {
     });
 
     clearInterval(this.timerInterval);
+
+    audio.pause();
+    audio.currentTime = 0;
   }
 
   convertDisplayTime(num) {
