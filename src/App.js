@@ -87,58 +87,71 @@ class App extends React.Component {
     let minutes = Math.floor(num/60);
     let seconds = num % 60;
 
+    minutes = minutes < 10 ? ('0' + minutes) : minutes;
     seconds = seconds < 10 ? ('0' + seconds) : seconds;
 
     return `${minutes}:${seconds}`;
   }
 
   decrementBreak() {
-    if (this.state.breakTime <= 1) {
-      this.setState(state => ({
-        breakTime: state.breakTime 
-      }));
+    const { breakTime } = this.state;
+
+    if (breakTime <= 1) {
+      this.setState({
+        breakTime: breakTime 
+      });
     } else {
-      this.setState(state => ({
-        breakTime: state.breakTime - 1
-      }));
+      this.setState({
+        breakTime: breakTime - 1
+      });
     }
   }
 
   incrementBreak() {
-    if (this.state.breakTime >= 60) {
-      this.setState(state => ({
-        breakTime: state.breakTime 
-      }));
+    const { breakTime } = this.state;
+
+    if (breakTime >= 60) {
+      this.setState({
+        breakTime: breakTime 
+      });
     } else {
-      this.setState(state => ({
-        breakTime: state.breakTime + 1
-      }));
+      this.setState({
+        breakTime: breakTime + 1
+      });
     }
   }
 
   decrementSession() {
-    if (this.state.sessionTime <= 1) {
-      this.setState(state => ({
-        sessionTime: state.sessionTime 
-      }));
+    const { playing, displayTitle, displayTime, sessionTime } = this.state;
+
+    if (playing === true || displayTitle === "Break") {
+      console.log("cannot complete action");
+    }  else if (sessionTime <= 1) {
+      this.setState({
+        sessionTime: sessionTime 
+      });
     } else {
-      this.setState(state => ({
-        sessionTime: state.sessionTime - 1,
-        displayTime: state.displayTime - (1 * 60)
-      }));
+      this.setState({
+        sessionTime: sessionTime - 1,
+        displayTime: displayTime - (1 * 60)
+      });
     }
   }
 
   incrementSession() {
-    if (this.state.sessionTime >= 60) {
-      this.setState(state => ({
-        sessionTime: state.sessionTime 
-      }));
+    const { playing, displayTime, displayTitle, sessionTime } = this.state;
+
+    if (playing === true || displayTitle === "Break") {
+      console.log("cannot complete action");
+    } else if (sessionTime >= 60) {
+      this.setState({
+        sessionTime: sessionTime 
+      });
     } else {
-      this.setState(state => ({
-        sessionTime: state.sessionTime + 1,
-        displayTime: state.displayTime + (1 * 60)
-      }));
+      this.setState({
+        sessionTime: sessionTime + 1,
+        displayTime: displayTime + (1 * 60)
+      });
     }
   }
 
