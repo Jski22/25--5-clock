@@ -32,4 +32,10 @@ i {
 
 #time-left {
   font-size: 45px;
+  font-weight: 700;
+}
+
+.card {
+  border: solid 5px white;
+  border-radius: 10px;
 }
