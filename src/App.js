@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { HiPlayPause } from "react-icons/hi2";
 import { MdOutlineRestartAlt } from "react-icons/md";
-import buzzer from './assets/buzzer.wav';
+import buzzer from './assets/buzzer2.mp3';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import React from 'react';
